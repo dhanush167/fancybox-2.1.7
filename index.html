@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>dklsjdfkljsd</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<!-- Add jQuery library -->
+	<script type="text/javascript" src="lib/jquery-1.10.2.min.js"></script>
+
+	<!-- Add mousewheel plugin (this is optional) -->
+	<script type="text/javascript" src="lib/jquery.mousewheel.pack.js?v=3.1.3"></script>
+
+	<!-- Add fancyBox main JS and CSS files -->
+	<script type="text/javascript" src="source/jquery.fancybox.pack.js?v=2.1.5"></script>
+	<link rel="stylesheet" type="text/css" href="source/jquery.fancybox.css?v=2.1.5" media="screen" />
+
+	<!-- Add Button helper (this is optional) -->
+	<link rel="stylesheet" type="text/css" href="source/helpers/jquery.fancybox-buttons.css?v=1.0.5" />
+	<script type="text/javascript" src="source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+
+	<!-- Add Thumbnail helper (this is optional) -->
+	<link rel="stylesheet" type="text/css" href="source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
+	<script type="text/javascript" src="source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+	<!-- Add Media helper (this is optional) -->
+	<script type="text/javascript" src="source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+
+
+
+
+
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+			 *  Simple image gallery. Uses default settings
+			 */
+
+			$('.fancybox').fancybox();
+
+			/*
+			 *  Different effects
+			 */
+
+			// Change title type, overlay closing speed
+			$(".fancybox-effects-a").fancybox({
+				helpers: {
+					title : {
+						type : 'outside'
+					},
+					overlay : {
+						speedOut : 0
+					}
+				}
+			});
+
+			// Disable opening and closing animations, change title type
+			$(".fancybox-effects-b").fancybox({
+				openEffect  : 'none',
+				closeEffect	: 'none',
+
+				helpers : {
+					title : {
+						type : 'over'
+					}
+				}
+			});
+
+			// Set custom style, close if clicked, change title type and overlay color
+			$(".fancybox-effects-c").fancybox({
+				wrapCSS    : 'fancybox-custom',
+				closeClick : true,
+
+				openEffect : 'none',
+
+				helpers : {
+					title : {
+						type : 'inside'
+					},
+					overlay : {
+						css : {
+							'background' : 'rgba(238,238,238,0.85)'
+						}
+					}
+				}
+			});
+
+			// Remove padding, set opening and closing animations, close if clicked and disable overlay
+			$(".fancybox-effects-d").fancybox({
+				padding: 0,
+
+				openEffect : 'elastic',
+				openSpeed  : 150,
+
+				closeEffect : 'elastic',
+				closeSpeed  : 150,
+
+				closeClick : true,
+
+				helpers : {
+					overlay : null
+				}
+			});
+
+			/*
+			 *  Button helper. Disable animations, hide close button, change title type and content
+			 */
+
+			$('.fancybox-buttons').fancybox({
+				openEffect  : 'none',
+				closeEffect : 'none',
+
+				prevEffect : 'none',
+				nextEffect : 'none',
+
+				closeBtn  : false,
+
+				helpers : {
+					title : {
+						type : 'inside'
+					},
+					buttons	: {}
+				},
+
+				afterLoad : function() {
+					this.title = 'Image ' + (this.index + 1) + ' of ' + this.group.length + (this.title ? ' - ' + this.title : '');
+				}
+			});
+
+
+			/*
+			 *  Thumbnail helper. Disable animations, hide close button, arrows and slide to next gallery item if clicked
+			 */
+
+			$('.fancybox-thumbs').fancybox({
+				prevEffect : 'none',
+				nextEffect : 'none',
+
+				closeBtn  : false,
+				arrows    : false,
+				nextClick : true,
+
+				helpers : {
+					thumbs : {
+						width  : 50,
+						height : 50
+					}
+				}
+			});
+
+			/*
+			 *  Media helper. Group items, disable animations, hide arrows, enable media and button helpers.
+			*/
+			$('.fancybox-media')
+				.attr('rel', 'media-gallery')
+				.fancybox({
+					openEffect : 'none',
+					closeEffect : 'none',
+					prevEffect : 'none',
+					nextEffect : 'none',
+
+					arrows : false,
+					helpers : {
+						media : {},
+						buttons : {}
+					}
+				});
+
+			/*
+			 *  Open manually
+			 */
+
+			$("#fancybox-manual-a").click(function() {
+				$.fancybox.open('1_b.jpg');
+			});
+
+			$("#fancybox-manual-b").click(function() {
+				$.fancybox.open({
+					href : 'iframe.html',
+					type : 'iframe',
+					padding : 5
+				});
+			});
+
+			$("#fancybox-manual-c").click(function() {
+				$.fancybox.open([
+					{
+						href : '1_b.jpg',
+						title : 'My title'
+					}, {
+						href : '2_b.jpg',
+						title : '2nd title'
+					}, {
+						href : '3_b.jpg'
+					}
+				], {
+					helpers : {
+						thumbs : {
+							width: 75,
+							height: 50
+						}
+					}
+				});
+			});
+
+
+		});
+	</script>
+
+	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+
+	<link rel="stylesheet" href="css/style.css"  type="text/css">
+
+
+
+
+</head>
+<body>
+
+
+<br> <br> <br>
+
+<div class="container">
+
+
+	 <div align="center" class="row">
+
+		 <div class="col-md-3">
+
+			 <a  class="fancybox"  href="jayamal/e5f253bbcd6c3c9061b5eb723ad99913.jpg" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="jayamal/e5f253bbcd6c3c9061b5eb723ad99913.jpg"  class="i_i_o"  width="70%" alt="" /></a>
+
+		 </div>
+
+		 <div class="col-md-3">
+
+			 <a class="fancybox" href="jayamal/en46c__76606_zoom.jpg" data-fancybox-group="gallery" title="Etiam quis mi eu elit temp"><img src="jayamal/en46c__76606_zoom.jpg" width="70%" class="i_i_o"  alt="" /></a>
+
+		 </div>
+
+
+		 <div class="col-md-3">
+
+			 <a class="fancybox" href="jayamal/four-wheeler-decal-500x500.png" data-fancybox-group="gallery" title="Cras neque mi, semper leon"><img src="jayamal/four-wheeler-decal-500x500.png" class="i_i_o"  width="70%" alt="" /></a>
+
+		 </div>
+
+
+		 <div class="col-md-3">
+
+
+			 <a class="fancybox" href="jayamal/honda-2014-wtcc-civic-1_jpg_677x1000_q100.jpg" data-fancybox-group="gallery" title="Sed vel sapien vel sem uno"><img src="jayamal/honda-2014-wtcc-civic-1_jpg_677x1000_q100.jpg" class="i_i_o"  width="70%" alt="" /></a>
+
+
+		 </div>
+
+
+	 </div>
+
+</div>
+
+
+
+
+	<br> <br>
+
+
+<div class="container">
+
+
+
+<div align="center" class="row">
+
+		 <div class="col-md-3">
+
+			 <a class="fancybox" href="jayamal/il_fullxfull.1370394106_cj69.jpg" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="jayamal/il_fullxfull.1370394106_cj69.jpg" class="i_i_o" width="70%" alt="" /></a>
+
+		 </div>
+
+		 <div class="col-md-3">
+
+			 <a class="fancybox" href="jayamal/maxresdefault.jpg" data-fancybox-group="gallery" title="Etiam quis mi eu elit temp"><img src="jayamal/maxresdefault.jpg" class="i_i_o" width="70%" alt="" /></a>
+
+		 </div>
+
+
+		 <div class="col-md-3">
+
+			 <a class="fancybox" href="jayamal/Minimalist-Graphic-Car-Wrap-Decal.jpg" data-fancybox-group="gallery" title="Cras neque mi, semper leon"><img src="jayamal/Minimalist-Graphic-Car-Wrap-Decal.jpg" class="i_i_o" width="70%" alt="" /></a>
+
+		 </div>
+
+
+		 <div class="col-md-3">
+
+
+			 <a class="fancybox" href="jayamal/Shado_Graphics_RC_Drifting_Decals-12.jpg" data-fancybox-group="gallery" title="Sed vel sapien vel sem uno"><img src="jayamal/Shado_Graphics_RC_Drifting_Decals-12.jpg" class="i_i_o" width="70%" alt="" /></a>
+
+
+		 </div>
+
+
+
+
+
+	 </div>
+
+
+</div>
+
+
+
+
+	<br> <br>
+
+
+	<div class="container">
+
+
+		<div align="center" class="row">
+
+			<div class="col-md-3">
+
+				<a class="fancybox" href="jayamal/2012-bmw-sa-335i-race-car-13_1600x0w.jpg" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="jayamal/2012-bmw-sa-335i-race-car-13_1600x0w.jpg" class="i_i_o"  alt="" /></a>
+
+			</div>
+
+			<div class="col-md-3">
+
+				<a class="fancybox" href="jayamal/BMW-M2-Safety-car-MotoGp-2016-5.jpg" data-fancybox-group="gallery" title="Etiam quis mi eu elit temp"><img src="jayamal/BMW-M2-Safety-car-MotoGp-2016-5.jpg"  class="i_i_o" alt="" /></a>
+
+			</div>
+
+
+			<div class="col-md-3">
+
+				<a class="fancybox" href="jayamal/Car-wrap-decal-as-a-means-to-advertise.jpg" data-fancybox-group="gallery" title="Cras neque mi, semper leon"><img src="jayamal/Car-wrap-decal-as-a-means-to-advertise.jpg" class="i_i_o" alt="" /></a>
+
+			</div>
+
+
+			<div class="col-md-3">
+
+
+				<a class="fancybox" href="jayamal/cool-muscle-cars-wallpaper-3727-hd-wallpapers.jpg" data-fancybox-group="gallery" title="Sed vel sapien vel sem uno"><img src="jayamal/cool-muscle-cars-wallpaper-3727-hd-wallpapers.jpg" class="i_i_o"  alt="" /></a>
+
+
+			</div>
+
+
+
+
+
+		</div>
+
+
+
+	</div>
+
+
+
+
+
+
+
+</body>
+</html>
